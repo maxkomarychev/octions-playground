@@ -10,9 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: cloc . > cloc.txt
       - uses: ./octions/issues/create-comment
         id: my_step_id
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue_number: ${{ github.event.pull_request.number }}
           body: hello!
+      - uses: ./octions/issues/create-comment
+        id: my_step_id
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue_number: ${{ github.event.pull_request.number }}
+          body: FILE::cloc.txt
