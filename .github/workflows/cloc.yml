@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: cloc . > cloc.txt
+      - run: npx cloc . > cloc.txt
       - uses: ./octions/issues/create-comment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
