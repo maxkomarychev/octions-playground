@@ -1,0 +1,16 @@
+on:
+  pull_request:
+    types:
+      - synchronize
+
+jobs:
+  cloc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./octions/issues/create-comment@master
+        id: my_step_id
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue_number: ${{ github.event.pull_request.number }}
+          body: hello!
